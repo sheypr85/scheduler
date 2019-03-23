@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const path = require('path')
 const morgan = require('morgan')
@@ -32,7 +33,7 @@ app.set('port', process.env.PORT || 3000)
 app.post('/api/appointments', (req, res) => {
   const twilioSid = config.twilio.sid
   const twilioAuth = config.twilio.auth
-  const twilioClient = twilio(twilioSid, twilioAuth)
+  const twilioClient = twilio(twilioSid, twilioAuth) 
   const twilioNumber = config.twilio.number
   const appointment = req.body
   appointment.phone = appointment.phone.replace(/\D/g,'')
